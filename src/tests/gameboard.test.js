@@ -93,11 +93,32 @@ describe('Gameboard: receiveAttack', () => {
     it('tests whether the attack hits a ship or not', () => {
         const gameboard = Gameboard();
         gameboard.placeShip(Ship(3), 0, 0, 'x');
-        expect(gameboard.receiveAttack(0, 0)).toBe(true);
-        expect(gameboard.receiveAttack(1, 0)).toBe(true);
-        expect(gameboard.receiveAttack(2, 0)).toBe(true);
-        expect(gameboard.receiveAttack(0, 1)).toBe(false);
-        expect(gameboard.receiveAttack(0, 2)).toBe(false);
-        expect(gameboard.receiveAttack(0, 3)).toBe(false);
+
+        gameboard.receiveAttack(0, 0)
+        gameboard.receiveAttack(1, 0)
+        gameboard.receiveAttack(2, 0)
+        gameboard.receiveAttack(0, 1)
+        gameboard.receiveAttack(0, 2)
+        gameboard.receiveAttack(0, 3)
+
+        expect(gameboard.isHit(0, 0)).toBe(true);
+        expect(gameboard.isHit(1, 0)).toBe(true);
+        expect(gameboard.isHit(2, 0)).toBe(true);
+        expect(gameboard.isHit(0, 1)).toBe(false);
+        expect(gameboard.isHit(0, 2)).toBe(false);
+        expect(gameboard.isHit(0, 3)).toBe(false);
+    })
+
+    it('tests whether the hit() function is called', () => {
+
+        const mockHit = vi.fn()
+        const ship = Ship(3)
+        ship.hit = mockHit;
+
+        const gameboard = Gameboard();
+        gameboard.placeShip(ship, 0, 0, 'x');
+        gameboard.receiveAttack(0, 0);
+
+        expect(mockHit).toHaveBeenCalledTimes(1);
     })
 })
