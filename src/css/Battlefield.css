@@ -1,0 +1,26 @@
+.box{
+    border: 1px white solid;
+    width: 30px;
+    height: 30px;
+}
+
+.battlefield {
+    display: flex;
+}
+.battlefieldCol {
+    display: flex;
+    flex-direction: column;
+}
+
+.battlefields{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+} 
+
+.box{
+    background-color: #5C9BA3;
+}
+.ship{
+    background-color: #062640;
+}
