@@ -8,11 +8,10 @@ export default function Gameboard(){
     const guessesBoard = Array.from({ length: size }, () => Array.from({ length: size }, () => 0));
 
     const receiveAttack = function(x, y){
-        if(board[x][y]) {
-            guessesBoard[x][y] = 1;
+        guessesBoard[x][y] = 1;
+        if(board[x][y]){
             board[x][y].hit();
         }
-        
     }
     const placeShip = function(ship, x, y, dir){
         const len = ship.getLength();
@@ -36,8 +35,21 @@ export default function Gameboard(){
     }
     const getSize = function(){return size}
     const isHit = function(x,y){
-        if(guessesBoard[x][y])return true
+        if(guessesBoard[x][y] && board[x][y])return true
         return false;
+    }
+    const allSunk = function(){
+        for(let i=0;i<size;i++){
+            for(let j=0;j<size;j++){
+                if(board[i][j] && !guessesBoard[i][j]){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    const isGuessed = function(x,y){
+        return x+y
     }
 
     return {
@@ -46,5 +58,7 @@ export default function Gameboard(){
         hasShipAt,
         getSize,
         isHit,
+        allSunk,
+        isGuessed,
     }
 }

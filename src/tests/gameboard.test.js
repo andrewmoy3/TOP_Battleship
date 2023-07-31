@@ -122,3 +122,19 @@ describe('Gameboard: receiveAttack', () => {
         expect(mockHit).toHaveBeenCalledTimes(1);
     })
 })
+
+describe('Gameboard: report all ships sunk', () => {
+    it('reports if all ships are sunk', () => {
+        const gameboard = Gameboard();
+        gameboard.placeShip(Ship(3), 0, 0, 'x');
+
+        expect(gameboard.allSunk()).toBe(false);
+        gameboard.receiveAttack(0, 0)
+        expect(gameboard.allSunk()).toBe(false);
+        gameboard.receiveAttack(1, 0)
+        gameboard.receiveAttack(2, 0)
+
+        expect(gameboard.allSunk()).toBe(true);
+
+    })
+})
