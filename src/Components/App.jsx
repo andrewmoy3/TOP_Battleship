@@ -31,8 +31,12 @@ function App(props) {
     <>
       <Banner />
       <div className='battlefields'>
-        <Battlefield Gameboard={playerBoard} />
-        <Battlefield Gameboard={computerBoard} />
+        <div data-testid='playerBoard' id='playerBoard'>
+          <Battlefield Gameboard={playerBoard} />
+        </div>
+        <div data-testid='computerBoard' id='computerBoard'>
+          <Battlefield Gameboard={computerBoard} />
+        </div>
       </div>
     </>
   )

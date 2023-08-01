@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
+import propTypes from 'prop-types'
 import '../css/Battlefield.css';
 import Ship from "./Ship";
+import Gameboard from "./Gameboard";
+
+Battlefield.propTypes = {
+    Gameboard: propTypes.shape({
+      getBoard: propTypes.func.isRequired,
+      placeShip: propTypes.func.isRequired,
+    }).isRequired,
+};
 
 export default function Battlefield({ Gameboard }) {
   const [board, setBoard] = useState(Gameboard.getBoard());

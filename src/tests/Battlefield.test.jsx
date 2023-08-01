@@ -33,7 +33,7 @@ describe('Battlefield tests', () => {
         expect(gameboard.hasShipAt(0, 0)).toBe(true);
     });
 
-    it('correctly renders the ship', async () => {
+    it('correctly renders the ship on click', async () => {
         const gameboard = Gameboard(); 
         expect(gameboard.hasShipAt(0, 0)).toBe(false);
         const { getByTestId } = render(<Battlefield Gameboard={gameboard} />);
