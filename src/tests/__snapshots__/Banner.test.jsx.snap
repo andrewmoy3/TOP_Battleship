@@ -1,0 +1,23 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renders the banner properly > snapshot 1`] = `
+<div>
+  <div
+    class="banner"
+    id="banner"
+  >
+    <div
+      data-testid="signature"
+      id="signature"
+    >
+      Made by Andrew Moy
+    </div>
+    <div
+      data-testid="title"
+      id="title"
+    >
+      Battleship
+    </div>
+  </div>
+</div>
+`;

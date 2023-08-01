@@ -24,6 +24,7 @@ export default function Battlefield({ Gameboard }) {
             <div
               onClick={() => place(rowIndex, columnIndex, 'x')}
               className={ship ? 'box ship' : 'box'}
+              data-testid={`box-${rowIndex}-${columnIndex}`}
               key={columnIndex}
             >
               

@@ -33,6 +33,5 @@ export default function Ship(len){
         getSunk,
         getLength,
         getHits,
-        name: 'steve'
     }
 }
