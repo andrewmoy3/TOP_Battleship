@@ -24,3 +24,7 @@
 .ship{
     background-color: #062640;
 }
+
+.hit{
+    background-color: red;
+}

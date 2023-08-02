@@ -2,40 +2,21 @@ import { useState } from 'react'
 import '../css/App.css'
 import Banner from './Banner'
 import Battlefield from './Battlefield'
+import Game from './Game'
 import Gameboard from './Gameboard'
-import Player from './Player'
-import Ship from './Ship'
 
 function App(props) {
-  const player = Player();
-  const computer = Player();
-  const playerBoard = Gameboard();
-  const computerBoard = Gameboard();
 
-  playerBoard.placeShip(Ship(2), 0, 0, 'y');
-  playerBoard.placeShip(Ship(2), 1, 0, 'y');
-  playerBoard.placeShip(Ship(3), 2, 0, 'y');
-  playerBoard.placeShip(Ship(4), 3, 0, 'y');
-  playerBoard.placeShip(Ship(5), 4, 0, 'y');
-  // computerBoard.placeShip(Ship(2), 0, 0, 'y');
-  // computerBoard.placeShip(Ship(2), 1, 0, 'y');
-  // computerBoard.placeShip(Ship(3), 2, 0, 'y');
-  // computerBoard.placeShip(Ship(4), 3, 0, 'y');
-  // computerBoard.placeShip(Ship(5), 4, 0, 'y');
-
-// You need methods to render the gameboards and to take user input for attacking. 
-// For attacks, let the user click on a coordinate in the enemy Gameboard.
-// The game loop should step through the game turn by turn using only methods from other objects. 
-
+  const { playerBoard, computerBoard, handleClick } = Game();
   return (
     <>
       <Banner />
       <div className='battlefields'>
         <div data-testid='playerBoard' id='playerBoard'>
-          <Battlefield Gameboard={playerBoard} />
+          <Battlefield Gameboard={playerBoard} handleClick={handleClick} player='player'/>
         </div>
         <div data-testid='computerBoard' id='computerBoard'>
-          <Battlefield Gameboard={computerBoard} />
+          <Battlefield Gameboard={computerBoard} handleClick={handleClick} player='computer'/>
         </div>
       </div>
     </>
