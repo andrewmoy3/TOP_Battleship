@@ -49,7 +49,10 @@ export default function Gameboard(){
         return true;
     }
     const isGuessed = function(x,y){
-        return x+y
+        if(guessesBoard[x][y]){
+            return true
+        }
+        return false;
     }
     const getBoard = function(){return board}
 

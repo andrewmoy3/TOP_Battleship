@@ -8,6 +8,8 @@ export default function Game(){
 
     // 0 = placing, 1 = game, 2 = game over
     let state = 1;
+    // p = player's turn, c = computer's turn
+    let turn = 'player';
 
     //create Gameboards
     const playerBoard = Gameboard();
@@ -35,7 +37,10 @@ export default function Game(){
         if(state == 0){
             board.placeShip(Ship(2), x, y, dir);   
         }else if (state == 1){
-            board.receiveAttack(x, y)
+            if(turn == player && !board.isGuessed(x,y)){
+                board.receiveAttack(x, y)
+                player === 'player' ? turn = 'computer' : turn = 'player';
+            }
             board.allSunk() ? state = 2 : '';
         }
         return;

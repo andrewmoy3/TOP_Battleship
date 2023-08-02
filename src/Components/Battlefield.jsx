@@ -31,11 +31,12 @@ export default function Battlefield({ Gameboard, handleClick, player }) {
       {board.map((row, rowIndex) => (
         <div key={rowIndex} className="battlefieldCol">
           {row.map((ship, columnIndex) => {
-            const isHit = Gameboard.isHit(rowIndex, columnIndex);
+            const isGuessed = Gameboard.isGuessed(rowIndex, columnIndex);
+            const hasShipAt = Gameboard.hasShipAt(rowIndex, columnIndex);
             return(
               <div
                 onClick={() => place(rowIndex, columnIndex, 'x')}
-                className={`box ${ship ? 'ship' : ''} ${isHit ? 'hit' : ''}`}
+                className={`box ${ship ? 'ship' : ''} ${isGuessed ? hasShipAt ? 'guessed hit' : 'guessed' : ''}`}
                 data-testid={`box-${rowIndex}-${columnIndex}`}
                 key={columnIndex}
               >

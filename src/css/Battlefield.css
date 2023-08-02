@@ -1,5 +1,5 @@
 .box{
-    border: 1px white solid;
+    border: 1px black solid;
     width: 30px;
     height: 30px;
 }
@@ -19,12 +19,16 @@
 } 
 
 .box{
-    background-color: #5C9BA3;
-}
-.ship{
     background-color: #062640;
 }
+.ship{
+    background-color: #5C9BA3;
+}
 
+.guessed{
+    background-color: #335477;
+    border: 1px white solid;
+}
 .hit{
     background-color: red;
 }
