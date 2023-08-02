@@ -1,32 +1,19 @@
 import React, { useState, useEffect } from "react";
 import propTypes from 'prop-types'
 import '../css/Battlefield.css';
-import Ship from "./Ship";
+import Ship from "./ship";
 
 Battlefield.propTypes = {
     Gameboard: propTypes.shape({
       getBoard: propTypes.func.isRequired,
       placeShip: propTypes.func.isRequired,
     }).isRequired,
-    handleClick: propTypes.func.isRequired,
+    place: propTypes.func.isRequired,
     player: propTypes.isRequired,
 };
 
-export default function Battlefield({ Gameboard, handleClick, player }) {
-  const [board, setBoard] = useState(Gameboard.getBoard());
-
-  useEffect(() => {
-    const newBoard = [...Gameboard.getBoard()];
-    setBoard(newBoard);
-  }, [Gameboard]);
-
-  //test!!
-
-  const place = function (x, y, dir) {
-    const newBoard = [...board];
-    handleClick(x, y, dir, player);
-    setBoard(newBoard);
-  };
+export default function Battlefield({ Gameboard, place, player }) {
+  const board = Gameboard.getBoard();
 
   return (
     <div className="battlefield">
@@ -37,7 +24,7 @@ export default function Battlefield({ Gameboard, handleClick, player }) {
             const hasShipAt = Gameboard.hasShipAt(rowIndex, columnIndex);
             return(
               <div
-                onClick={() => place(rowIndex, columnIndex, 'x')}
+                onClick={() => place(rowIndex, columnIndex, 'x', player)}
                 className={`box ${ship ? 'ship' : ''} ${isGuessed ? hasShipAt ? 'guessed hit' : 'guessed' : ''}`}
                 data-testid={`box-${rowIndex}-${columnIndex}`}
                 key={columnIndex}

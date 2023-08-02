@@ -1,6 +1,6 @@
 import Gameboard from './Gameboard'
 import Player from './Player'
-import Ship from './Ship'
+import Ship from './ship'
 
 export default function Game(){
     // const player = Player();

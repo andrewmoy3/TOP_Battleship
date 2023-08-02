@@ -1,8 +1,7 @@
 
-import Ship from "./Ship"
+import Ship from "./ship"
 
 export default function Gameboard(){
-
     const size = 10;
     const board = Array.from({ length: size }, () => Array.from({ length: size }, () => 0));
     const guessesBoard = Array.from({ length: size }, () => Array.from({ length: size }, () => 0));

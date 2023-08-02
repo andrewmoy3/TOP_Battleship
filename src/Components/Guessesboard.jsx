@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import propTypes from 'prop-types'
 import '../css/Battlefield.css';
-import Ship from "./Ship";
+import Ship from "./ship";
 
 Guessesboard.propTypes = {
     Gameboard: propTypes.shape({
