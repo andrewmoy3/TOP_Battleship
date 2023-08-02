@@ -9,6 +9,7 @@ import Guessesboard from './Guessesboard'
 function App(props) {
 
   const { playerBoard, computerBoard, handleClick } = Game();
+  
   return (
     <>
       <Banner />

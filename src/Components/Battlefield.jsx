@@ -20,6 +20,8 @@ export default function Battlefield({ Gameboard, handleClick, player }) {
     setBoard(newBoard);
   }, [Gameboard]);
 
+  //test!!
+
   const place = function (x, y, dir) {
     const newBoard = [...board];
     handleClick(x, y, dir, player);
