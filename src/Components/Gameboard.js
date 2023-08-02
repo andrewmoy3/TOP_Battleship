@@ -55,6 +55,7 @@ export default function Gameboard(){
         return false;
     }
     const getBoard = function(){return board}
+    const getGuesses = function(){return guessesBoard}
 
     return {
         receiveAttack,
@@ -65,5 +66,6 @@ export default function Gameboard(){
         allSunk,
         isGuessed,
         getBoard,
+        getGuesses,
     }
 }
