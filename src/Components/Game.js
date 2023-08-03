@@ -18,11 +18,11 @@ export default function Game(){
     //place ships ; for now, placing them on predetermined squares
     //this will be a selection phase later
         // disallow ships to be placed on same square
-    playerBoard.placeShip(Ship(2), 0, 0, 'y');
-    playerBoard.placeShip(Ship(2), 1, 0, 'y');
-    playerBoard.placeShip(Ship(3), 2, 0, 'y');
-    playerBoard.placeShip(Ship(4), 3, 0, 'y');
-    playerBoard.placeShip(Ship(5), 4, 0, 'y');
+    playerBoard.placeShip(Ship(2), 0, 0, 'x');
+    playerBoard.placeShip(Ship(2), 0, 1, 'x');
+    playerBoard.placeShip(Ship(3), 0, 2, 'x');
+    playerBoard.placeShip(Ship(4), 0, 3, 'x');
+    playerBoard.placeShip(Ship(5), 0, 4, 'x');
     computerBoard.placeShip(Ship(2), 0, 0, 'y');
     computerBoard.placeShip(Ship(2), 1, 0, 'y');
     computerBoard.placeShip(Ship(3), 2, 0, 'y');

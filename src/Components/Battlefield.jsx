@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
-import propTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import '../css/Battlefield.css';
 import Ship from "./ship";
 
 Battlefield.propTypes = {
-    Gameboard: propTypes.shape({
-      getBoard: propTypes.func.isRequired,
-      placeShip: propTypes.func.isRequired,
+    Gameboard: PropTypes.shape({
+      getBoard: PropTypes.func.isRequired,
+      placeShip: PropTypes.func.isRequired,
+      hasShipAt: PropTypes.func.isRequired,
     }).isRequired,
-    place: propTypes.func.isRequired,
-    player: propTypes.isRequired,
+    OppGameboard: PropTypes.shape({
+      isGuessed: PropTypes.func.isRequired,
+    })
 };
 
-export default function Battlefield({ Gameboard, place, player }) {
+export default function Battlefield({ Gameboard, OppGameboard }) {
   const board = Gameboard.getBoard();
 
   return (
@@ -20,11 +22,11 @@ export default function Battlefield({ Gameboard, place, player }) {
       {board.map((row, rowIndex) => (
         <div key={rowIndex} className="battlefieldCol">
           {row.map((ship, columnIndex) => {
-            const isGuessed = Gameboard.isGuessed(rowIndex, columnIndex);
+            const isGuessed = OppGameboard.isGuessed(rowIndex, columnIndex);
             const hasShipAt = Gameboard.hasShipAt(rowIndex, columnIndex);
             return(
               <div
-                onClick={() => place(rowIndex, columnIndex, 'x', player)}
+                // onClick={() => place(rowIndex, columnIndex, 'x', player)}
                 className={`box ${ship ? 'ship' : ''} ${isGuessed ? hasShipAt ? 'guessed hit' : 'guessed' : ''}`}
                 data-testid={`box-${rowIndex}-${columnIndex}`}
                 key={columnIndex}

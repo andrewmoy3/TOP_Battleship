@@ -26,15 +26,15 @@ function App({ playerBoard, computerBoard, handleClick }) {
 
   return (
     <>
-      <Banner />
-      <div className='battlefields'>
-        <div data-testid='playerBoard' id='playerBoard'>
-          <Battlefield Gameboard={playerBoard} place={place} player='player'/>
-          {/* <Guessesboard Gameboard={playerBoard} handleClick={handleClick} player='player'/> */}
-        </div>
+      {/* <Banner /> */}
+      <div className='battlefields'> 
         <div data-testid='computerBoard' id='computerBoard'>
-          <Battlefield Gameboard={computerBoard} place={place} player='computer'/>
-          {/* <Guessesboard Gameboard={playerBoard} handleClick={handleClick} player='player'/> */}
+          <Guessesboard Gameboard={playerBoard} OppGameboard={computerBoard} place={place} player='player'/>
+          <Guessesboard Gameboard={computerBoard} OppGameboard={playerBoard} place={place} player='computer'/>
+        </div>
+        <div data-testid='playerBoard' id='playerBoard'>
+          <Battlefield Gameboard={playerBoard} OppGameboard={computerBoard}/>
+          <Battlefield Gameboard={computerBoard} OppGameboard={playerBoard}/>
         </div>
       </div>
     </>
