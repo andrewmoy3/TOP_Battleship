@@ -1,11 +1,7 @@
 import Gameboard from './Gameboard'
-import Player from './Player'
-import Ship from './ship'
+import Ship from './Ship'
 
-export default function Game() {
-    // const player = Player();
-    // const computer = Player();
-
+export default function Game(setGameOver) {
     // 0 = placing, 1 = game, 2 = game over
     let state = 1
     // p = player's turn, c = computer's turn
@@ -47,15 +43,32 @@ export default function Game() {
         return false
     }
     playerBoard.placeShip(Ship(2), 0, 0, 'x')
-    playerBoard.placeShip(Ship(2), 0, 1, 'x')
-    playerBoard.placeShip(Ship(3), 0, 2, 'x')
-    playerBoard.placeShip(Ship(4), 0, 3, 'x')
-    playerBoard.placeShip(Ship(5), 0, 4, 'x')
+    // playerBoard.placeShip(Ship(2), 0, 1, 'x')
+    // playerBoard.placeShip(Ship(3), 0, 2, 'x')
+    // playerBoard.placeShip(Ship(4), 0, 3, 'x')
+    // playerBoard.placeShip(Ship(5), 0, 4, 'x')
     generateCompShips()
 
+    const isGameOver = function (player) {
+        const board =
+            player === 'player'
+                ? computerBoard.getBoard()
+                : playerBoard.getBoard()
+        const guessesBoard =
+            player === 'player'
+                ? playerBoard.getGuesses()
+                : computerBoard.getGuesses()
+        for (let i = 0; i < 10; i++) {
+            for (let j = 0; j < 10; j++) {
+                if (board[i][j] && !guessesBoard[i][j]) {
+                    return false
+                }
+            }
+        }
+        return true
+    }
     // after placing ships, take turns choosing squares to attack
     // check if the game is over
-
     const handleClick = function (x, y, dir, player) {
         const board = player === 'player' ? playerBoard : computerBoard
         if (state == 0) {
@@ -65,16 +78,18 @@ export default function Game() {
                 board.receiveAttack(x, y)
                 player === 'player' ? (turn = 'computer') : (turn = 'player')
             }
-            board.allSunk() ? (state = 2) : ''
-            gameOver(player)
+            if (isGameOver(player)) {
+                setGameOver(true)
+                state = 2
+            }
         }
         return
     }
 
     // when game is over, show who won, reveal both boards, new-game button
-    const gameOver = function (player) {
-        return player
-    }
+    // const gameOver = function (player) {
+    //     return player
+    // }
 
     return {
         playerBoard,

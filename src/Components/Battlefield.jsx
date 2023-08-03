@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import '../css/Battlefield.css'
-import Ship from './ship'
 
 Battlefield.propTypes = {
     Gameboard: PropTypes.shape({
@@ -32,7 +30,6 @@ export default function Battlefield({ Gameboard, OppGameboard }) {
                         )
                         return (
                             <div
-                                // onClick={() => place(rowIndex, columnIndex, 'x', player)}
                                 className={`box ${ship ? 'ship' : ''} ${
                                     isGuessed
                                         ? hasShipAt

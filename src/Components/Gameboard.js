@@ -1,4 +1,4 @@
-import Ship from './ship'
+import Ship from './Ship'
 
 export default function Gameboard() {
     const size = 10
@@ -42,16 +42,7 @@ export default function Gameboard() {
         if (guessesBoard[x][y] && board[x][y]) return true
         return false
     }
-    const allSunk = function () {
-        for (let i = 0; i < size; i++) {
-            for (let j = 0; j < size; j++) {
-                if (board[i][j] && !guessesBoard[i][j]) {
-                    return false
-                }
-            }
-        }
-        return true
-    }
+
     const isGuessed = function (x, y) {
         if (guessesBoard[x][y]) {
             return true
@@ -71,7 +62,6 @@ export default function Gameboard() {
         hasShipAt,
         getSize,
         isHit,
-        allSunk,
         isGuessed,
         getBoard,
         getGuesses,
