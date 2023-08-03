@@ -1,22 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import '../css/App.css'
-import Banner from './Banner'
 import Battlefield from './Battlefield'
-import Game from './Game'
 import Gameboard from './Gameboard'
+import PropTypes from 'prop-types'
 import Guessesboard from './Guessesboard'
 
+App.propTypes = {
+    playerBoard: Gameboard,
+    computerBoard: Gameboard,
+    handleClick: PropTypes.func,
+}
 function App({ playerBoard, computerBoard, handleClick }) {
-    // console.log(playerBoard.getBoard())
     const [board, setBoard] = useState(playerBoard.getBoard())
 
-    // useEffect(() => {
-    //   const newBoard = [...playerBoard.getBoard()];
-    //   setBoard(newBoard);
-    // }, [playerBoard]);
-
     const place = function (x, y, dir, player) {
-        // const newBoard = [...board];
         handleClick(x, y, dir, player)
         const updatedBoard =
             player === 'player'
