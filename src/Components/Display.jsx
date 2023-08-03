@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import '../css/Display.css'
 import Battlefield from './Battlefield'
-import Gameboard from './Gameboard'
+import Banner from './Banner'
 import PropTypes from 'prop-types'
 import Guessesboard from './Guessesboard'
 
@@ -11,39 +11,31 @@ Display.propTypes = {
     handleClick: PropTypes.func,
 }
 function Display({ playerBoard, computerBoard, handleClick }) {
-    const [board, setBoard] = useState(playerBoard.getBoard())
-
-    // useEffect(() => {
-    //     setBoard(playerBoard.getBoard())
-    // }, [playerBoard])
+    const [board, setBoard] = useState([])
 
     const place = async function (x, y, dir, player) {
         handleClick(x, y, dir, player)
-        const updatedBoard =
-            player === 'player'
-                ? playerBoard.getBoard()
-                : computerBoard.getBoard()
-        setBoard([...updatedBoard])
+
+        setBoard([])
 
         await new Promise((resolve) => setTimeout(resolve, 500))
 
-        setBoard([...updatedBoard])
-        // setBoard(board.getBoard());
+        setBoard([])
     }
 
     return (
         <>
-            {/* <Banner /> */}
+            <Banner />
             <div className="battlefields">
                 <div data-testid="playerBoard" id="playerBoard">
                     <Battlefield
                         Gameboard={playerBoard}
                         OppGameboard={computerBoard}
                     />
-                    <Battlefield
+                    {/* <Battlefield
                         Gameboard={computerBoard}
                         OppGameboard={playerBoard}
-                    />
+                    /> */}
                 </div>
                 <div data-testid="computerBoard" id="computerBoard">
                     <Guessesboard
@@ -52,12 +44,12 @@ function Display({ playerBoard, computerBoard, handleClick }) {
                         place={place}
                         player="player"
                     />
-                    <Guessesboard
+                    {/* <Guessesboard
                         Gameboard={computerBoard}
                         OppGameboard={playerBoard}
                         place={place}
                         player="computer"
-                    />
+                    /> */}
                 </div>
             </div>
         </>

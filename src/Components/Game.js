@@ -17,7 +17,7 @@ export default function Game(setGameOver) {
 
     const generateCompShips = function () {
         var dir
-        const lengths = [2, 2, 3, 4, 5]
+        const lengths = [2, 3, 3, 4, 5]
         var x = Math.floor(Math.random() * 10)
         var y = Math.floor(Math.random() * 10)
         for (let i = 0; i < 5; i++) {
@@ -43,10 +43,10 @@ export default function Game(setGameOver) {
         return false
     }
     playerBoard.placeShip(Ship(2), 0, 0, 'x')
-    // playerBoard.placeShip(Ship(2), 0, 1, 'x')
-    // playerBoard.placeShip(Ship(3), 0, 2, 'x')
-    // playerBoard.placeShip(Ship(4), 0, 3, 'x')
-    // playerBoard.placeShip(Ship(5), 0, 4, 'x')
+    playerBoard.placeShip(Ship(2), 8, 5, 'x')
+    playerBoard.placeShip(Ship(3), 6, 2, 'x')
+    playerBoard.placeShip(Ship(4), 2, 8, 'x')
+    playerBoard.placeShip(Ship(5), 3, 6, 'x')
     generateCompShips()
 
     const computerTurn = async function () {
@@ -61,6 +61,10 @@ export default function Game(setGameOver) {
         ) {
             x = Math.floor(Math.random() * 10)
             y = Math.floor(Math.random() * 10)
+        }
+        if (isGameOver('computer')) {
+            setGameOver(true)
+            state = 2
         }
         await new Promise((resolve) => setTimeout(resolve, 500))
 
@@ -95,13 +99,13 @@ export default function Game(setGameOver) {
             if (turn == player && !board.isGuessed(x, y)) {
                 board.receiveAttack(x, y)
                 player === 'player' ? (turn = 'computer') : (turn = 'player')
-            }
-            if (isGameOver(player)) {
-                setGameOver(true)
-                state = 2
-            } else {
-                computerTurn()
-                turn = 'player'
+                if (isGameOver('player')) {
+                    setGameOver(true)
+                    state = 2
+                } else {
+                    computerTurn()
+                    turn = 'player'
+                }
             }
         }
         return
