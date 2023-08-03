@@ -1,4 +1,4 @@
-.box{
+.box {
     border: 1px black solid;
     width: 30px;
     height: 30px;
@@ -12,23 +12,23 @@
     flex-direction: column;
 }
 
-.battlefields{
+.battlefields {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
-} 
+}
 
-.box{
+.box {
     background-color: #062640;
 }
-.ship{
-    background-color: #5C9BA3;
+.ship {
+    background-color: #5c9ba3;
 }
 
-.guessed{
+.guessed {
     background-color: #335477;
     border: 1px white solid;
 }
-.hit{
+.hit {
     background-color: red;
 }

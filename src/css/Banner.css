@@ -1,14 +1,14 @@
-#banner{
+#banner {
     position: fixed;
     top: 0;
     left: 0;
     width: calc(100% - 60px);
     background-color: #062640;
-    color: #FCECC9;
+    color: #fcecc9;
     padding: 30px;
 }
 
-#signature{
+#signature {
     position: fixed;
     left: 10px;
     top: 10px;
@@ -16,7 +16,7 @@
     font-size: x-small;
 }
 
-#title{
+#title {
     margin: auto;
     width: 50%;
     padding: 10px;

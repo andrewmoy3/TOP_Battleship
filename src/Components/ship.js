@@ -3,29 +3,29 @@
 // REMEMBER you only have to test your object’s public interface. Only methods or properties that are used outside of your ‘ship’ object need unit tests.
 // Ships should have a hit() function that increases the number of ‘hits’ in your ship.
 // isSunk() should be a function that calculates it based on their length and the number of ‘hits’.
-export default function Ship(len){
-    var length = len;
-    var numHit = 0;
+export default function Ship(len) {
+    var length = len
+    var numHit = 0
 
-    const hit = function(){
-        if(numHit < length){
-            numHit++;
+    const hit = function () {
+        if (numHit < length) {
+            numHit++
         }
     }
 
-    const getSunk = function(){
-        if(numHit == length){
-            return true;
+    const getSunk = function () {
+        if (numHit == length) {
+            return true
         }
-        return false;    
+        return false
     }
 
-    const getLength = function(){
-        return length;
+    const getLength = function () {
+        return length
     }
 
-    const getHits = function(){
-        return numHit;
+    const getHits = function () {
+        return numHit
     }
 
     return {

@@ -1,13 +1,15 @@
-.pokemonContainer{
-    
+.pokemonContainer {
     height: 50%;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Replace 'x' with the number of columns you want */
+    grid-template-columns: repeat(
+        2,
+        1fr
+    ); /* Replace 'x' with the number of columns you want */
     grid-gap: 10px; /* Adjust the gap between items as needed */
 }
 
-.pokemon img{
+.pokemon img {
     height: 100px;
     width: 100%;
     object-fit: cover; /* Adjust the object-fit property as needed (cover, contain, etc.) */
