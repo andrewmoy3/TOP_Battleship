@@ -9,6 +9,7 @@ let playerBoard, computerBoard, handleClick
 
 function App() {
     const [isGameOver, setIsGameOver] = useState(false)
+
     if (isGameOver == false) {
         const game = Game(setIsGameOver)
         playerBoard = game.playerBoard

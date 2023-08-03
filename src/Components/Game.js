@@ -1,5 +1,5 @@
 import Gameboard from './Gameboard'
-import Ship from './Ship'
+import Ship from './ship'
 
 export default function Game(setGameOver) {
     // 0 = placing, 1 = game, 2 = game over
@@ -49,6 +49,24 @@ export default function Game(setGameOver) {
     // playerBoard.placeShip(Ship(5), 0, 4, 'x')
     generateCompShips()
 
+    const computerTurn = async function () {
+        var x = Math.floor(Math.random() * 10)
+        var y = Math.floor(Math.random() * 10)
+        while (
+            x > 9 ||
+            x < 0 ||
+            y > 9 ||
+            y < 0 ||
+            computerBoard.isGuessed(x, y)
+        ) {
+            x = Math.floor(Math.random() * 10)
+            y = Math.floor(Math.random() * 10)
+        }
+        await new Promise((resolve) => setTimeout(resolve, 500))
+
+        computerBoard.receiveAttack(x, y)
+    }
+
     const isGameOver = function (player) {
         const board =
             player === 'player'
@@ -81,15 +99,15 @@ export default function Game(setGameOver) {
             if (isGameOver(player)) {
                 setGameOver(true)
                 state = 2
+            } else {
+                computerTurn()
+                turn = 'player'
             }
         }
         return
     }
 
     // when game is over, show who won, reveal both boards, new-game button
-    // const gameOver = function (player) {
-    //     return player
-    // }
 
     return {
         playerBoard,

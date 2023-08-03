@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../css/Display.css'
 import Battlefield from './Battlefield'
 import Gameboard from './Gameboard'
@@ -13,12 +13,20 @@ Display.propTypes = {
 function Display({ playerBoard, computerBoard, handleClick }) {
     const [board, setBoard] = useState(playerBoard.getBoard())
 
-    const place = function (x, y, dir, player) {
+    // useEffect(() => {
+    //     setBoard(playerBoard.getBoard())
+    // }, [playerBoard])
+
+    const place = async function (x, y, dir, player) {
         handleClick(x, y, dir, player)
         const updatedBoard =
             player === 'player'
                 ? playerBoard.getBoard()
                 : computerBoard.getBoard()
+        setBoard([...updatedBoard])
+
+        await new Promise((resolve) => setTimeout(resolve, 500))
+
         setBoard([...updatedBoard])
         // setBoard(board.getBoard());
     }
